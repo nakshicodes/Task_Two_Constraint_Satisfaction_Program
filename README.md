@@ -66,3 +66,66 @@ Australia Map Colouring Solution:
 ```
 
 A map image `australia_colouring.png` is also saved in the same folder.
+
+# Task 2(b) – Nairobi Sub-Counties Map Colouring (CSP)
+
+A Constraint Satisfaction Problem (CSP) that colours all **17 Nairobi sub-counties** using the **minimum possible number of colours** so that no two adjacent sub-counties share the same colour.
+
+---
+
+## What It Does
+
+Defines all 17 Nairobi sub-counties and their shared borders, then automatically finds the smallest number of colours needed to colour the map without any two neighbouring sub-counties sharing a colour. The solution is printed to the console and drawn as a schematic map.
+
+---
+
+## Requirements
+
+```bash
+pip install matplotlib
+```
+
+---
+
+## How to Run
+
+```bash
+python Task_Two_Nairobi_SubCounties.py
+```
+
+> **Note:** Close the map window for the program to finish.
+
+---
+
+## Sub-Counties Covered
+
+Westlands, Dagoretti North, Dagoretti South, Langata, Kibra, Roysambu, Kasarani, Ruaraka, Embakasi North, Embakasi West, Embakasi Central, Embakasi East, Embakasi South, Makadara, Kamukunji, Starehe, Mathare
+
+---
+
+## How the Algorithm Works
+
+The program tries **2 colours first**, then **3**, then **4**, stopping as soon as a valid solution is found. For each attempt it uses **backtracking**:
+
+1. Pick the first uncoloured sub-county
+2. Try assigning it a colour
+3. Check it doesn't match any already-coloured neighbour
+4. If valid — move to the next sub-county
+5. If no colour works — backtrack and change the previous assignment
+6. Repeat until all 17 sub-counties are coloured
+
+---
+
+## Result
+
+```
+Searching for minimum number of colours...
+  2 colours: No solution.
+  3 colours: Solution found!
+
+Minimum colours needed: 3
+```
+
+2 colours are not enough because the sub-county graph contains **odd-length cycles** (triangles of mutual neighbours). 3 colours are sufficient.
+
+A map image `nairobi_colouring.png` is also saved in the same folder.
